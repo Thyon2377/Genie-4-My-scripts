@@ -1,0 +1,70 @@
+
+echo *********************************
+echo *********************************
+echo *****Start at the Town Square****
+echo *********************************
+echo *********************************
+pause 3
+
+Start:
+move w
+move w
+move w
+pause 1
+move w
+move w
+move w
+pause 1
+move w
+put go gate
+move nw
+put go path
+put go trail
+pause .5
+move ne
+pause
+move n
+pause
+
+Swim:
+move n
+pause
+move sw
+pause
+move e
+pause
+
+mindcheck:
+put exp Athletics
+match Home 34/34
+match Swim clear
+matchwait
+ 
+Home:
+move s
+pause
+move sw
+pause
+put go trail
+pause 1
+put go path
+pause 1
+move se
+put go gate
+pause .5
+move e
+move e
+move e
+pause .5
+move e
+move e
+pause .5
+move e
+move e
+pause 3
+echo ************
+echo You're Home!
+echo ************
+exit
+
+
