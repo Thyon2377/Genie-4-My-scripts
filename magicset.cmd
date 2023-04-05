@@ -5,32 +5,32 @@
 
 
 #  CHARACTERNAME NEEDS TO BE AS IT APPEARS EXACTLY WHEN YOU ENTER #echo $charactername (first letter capitalized)
-if ("$charactername" = "Rheyha") then
+if ("$charactername" = "Amesia") then
 	{
 	### Your spell to train Augmentation.  Should be a spell that only trains augmentation for most efficiency
-	  put #var MAGIC.Augmentation.spell Athletic
+	  put #var MAGIC.Augmentation.spell EASE
 	### For the augmentation spell you picked, this is the initial spell prep amount
-	  put #var MAGIC.Augmentation.cast 16
+	  put #var MAGIC.Augmentation.cast 14
 	### For the augmentation spell you picked, this is the amount to harness
 	  put #var MAGIC.Augmentation.harness 5
 	### For the augmentation spell you picked, this is the amount to charge your cambrinth
-	  put #var MAGIC.Augmentation.charge 5
+	  put #var MAGIC.Augmentation.charge 3
 	### Your spell to train Utility.  Should be a spell that only trains utility for most efficiency
-	  put #var MAGIC.Utility.spell Compost
+	  put #var MAGIC.Utility.spell EOTB
 	### For the utility spell you picked, this is the initial spell prep amount
-	  put #var MAGIC.Utility.cast 13
+	  put #var MAGIC.Utility.cast 15
 	### For the utility spell you picked, this is the amount to harness
-	  put #var MAGIC.Utility.harness 5
+	  put #var MAGIC.Utility.harness 3
 	### For the utility spell you picked, this is the amount to charge your cambrinth
-	  put #var MAGIC.Utility.charge 5
+	  put #var MAGIC.Utility.charge 3
 	### Your spell to train Warding.  Should be a spell that only trains warding for most efficiency
 	  put #var MAGIC.Warding.spell MAF
 	### For the warding spell you picked, this is the initial spell prep amount
-	  put #var MAGIC.Warding.cast 15
+	  put #var MAGIC.Warding.cast 14
 	### For the warding spell you picked, this is the amount to harness
-	  put #var MAGIC.Warding.harness 5
+	  put #var MAGIC.Warding.harness 3
 	### For the warding spell you picked, this is the amount to charge your cambrinth
-	  put #var MAGIC.Warding.charge 5
+	  put #var MAGIC.Warding.charge 4
 	### Your spell to train Sorcery.  Caveat emptor.  Sorcery is dangerous.
 	  put #var MAGIC.Sorcery.spell NULL
 	### For the sorcery spell you picked, this is the initial spell prep amount
@@ -40,7 +40,7 @@ if ("$charactername" = "Rheyha") then
 	### For the sorcery spell you picked, this is the amount to charge your cambrinth
 	  put #var MAGIC.Sorcery.charge 0
 	### This is your cambrinth item.  You can put adjective noun here if you have multiples of the same noun
-	  put #var MAGIC.cambrinth cambrinth ring
+	  put #var MAGIC.cambrinth cambrinth armband
 
 	### YES if you train using symbiosis.  NO if you do not.
 	  put #var MAGIC.Utility.symbiosis NO
