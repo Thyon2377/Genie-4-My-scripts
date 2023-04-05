@@ -44,7 +44,7 @@ LOAD_VARS:
      var CHARACTER9 Hyapatia
      var CHARACTER10 Kimchee
      var CHARACTER11 Meal 
-     var CHARACTER12 NULL
+     var CHARACTER12 Amesia
      var CHARACTER13 NULL
      var CHARACTER14 NULL
      var CHARACTER15 NULL
@@ -1050,7 +1050,7 @@ if "$charactername" = "%CHARACTER2" then
 ### WEAPON.GUI (ON or OFF) - IF ON - CREATES A WEAPON GUI WINDOW AT THE START TO CHOOSE YOUR WEAPONS FOR THAT RUN *ONLY IF YOU HAVE AN ARRAY OF WEAPONS SET IN A SINGLE WEAPON VARIABLE*
      var WEAPON.GUI OFF
 ### COMBAT CRITTER MUST BE A VALID CREATURE NAME - USE FULL NAME OR 1/2/3 TO SPECIFY TIERS *SNOW GOBLIN 2
-     var COMBAT.CRITTER LUNSHELE TREKHALO
+     var COMBAT.CRITTER ADAN'F Spirit Dancer
 ### ALTERNATE CRITTER - PICK A ALTERNATE CRITTER TO HUNT - IF YOUR MAIN HUNTING GROUND IS FULL!
      var ALTERNATE.CRITTER black goblin
 ## USED TO MOVE YOUR FAVORITE ROOMS TO THE TOP OF THE ROOM LIST. MUST BE VALID TO YOUR HUNTING GROUND
@@ -1564,7 +1564,7 @@ if "$charactername" = "%CHARACTER2" then
      var RPA ON
 ## LIST THE PEOPLE YOU WANT TO BESTOW RP POINTS TO BELOW IN AN ARRAY!! 
 ### ie. var PirpList Name1|Name2|Name3|Name4|Name5
-     var PirpList Chyral|Arkalye|Penhryn|Phoul|Kenamer|Aislynn|Atvus|Neeno|Dantia|
+     var PirpList Greilblaze|Arkalye|Penhryn|Phoul|Rzin|Aislynn|Atvus|Neeno|Nawain|
 ######################################################################################################################
 # GENERAL MAGIC VARS - ALL MAGIC USERS MUST SET THESE
 ######################################################################################################################
@@ -1603,31 +1603,31 @@ if "$charactername" = "%CHARACTER2" then
 # USE SYMBIOSIS ON ATTACK SPELLS? (ON or OFF) - WARNING - SMART.SPELLS WILL PROBABLY NOT WORK CORRECTLY WITH SYMBIOSIS!
 ## WITH SYMBIOSIS ON YOU NEED TO SET MANA MANUALLY AND TURN OFF SMART.SPELLS!
      var Target.Symbiosis OFF
-     var Utility.Symbiosis OFF 
-     var Augmentation.Symbiosis OFF
-     var Warding.Symbiosis OFF
+     var Utility.Symbiosis ON  
+     var Augmentation.Symbiosis ON 
+     var Warding.Symbiosis ON 
      var Sorcery.Symbiosis OFF
-     var Debilitation.Symbiosis OFF 
+     var Debilitation.Symbiosis ON  
 # USE SYMBIOSIS ON BUFFS? (ON or OFF) - WARNING - MAY NOT WORK PROPERLY WITH AUTO-DETECTING MANA
      var Symbiosis.Buffs OFF 
 ### OFFENSIVE SPELL MANA AMOUNTS - Set amount of mana to put into each magic type
      var Target.Mana 10
-     var Debilitation.Mana 10
-     var Utility.Mana 10
-     var Augmentation.Mana 10
-     var Warding.Mana 10
+     var Debilitation.Mana 12
+     var Utility.Mana 17
+     var Augmentation.Mana 12
+     var Warding.Mana 17
 ### SET SORCERY MANA TO NULL IF YOU WANT SMART MANA TO SET IT - OTHERWISE SET IT HERE
      var Sorcery.Mana 20
 ### OFFENSIVE SPELL CAMB AMOUNTS - Set amount of mana to put into each magic type
-     var Target.Camb 2
-     var Debilitation.Camb 2
-     var Utility.Camb 2
-     var Augmentation.Camb 2
-     var Warding.Camb 2
+     var Target.Camb NULL
+     var Debilitation.Camb 5
+     var Utility.Camb 5
+     var Augmentation.Camb 5
+     var Warding.Camb 5
      var Sorcery.Camb 2
 ### SMART MANA FOR SPELLS? AUTO-DETERMINES THE OPTIMAL MANA FOR EACH SPELL AFTER EVERY NEW STARTUP
 ### (ON or OFF) - SETTING THIS ON WILL OVERRIDE MANA SETTINGS ABOVE
-     var SMART.SPELLS ON
+     var SMART.SPELLS OFF 
 ## CAMB HEAVY (ON or OFF) (OFF by default) - ON WILL MAKE SMART MANA PUT MORE MANA INTO CAMBRINTH THEN MAIN PREP
      var Camb.Heavy OFF 
 ## NO CAMBRINTH USE DURING TM / DEBIL SPELLS (ON or OFF) 
@@ -2020,7 +2020,7 @@ if "$charactername" = "%CHARACTER3" then
      var ALTERNATE.CRITTER ORC BANDIT
 ## USED TO MOVE YOUR FAVORITE ROOMS TO THE TOP OF THE ROOM LIST. MUST BE VALID TO YOUR HUNTING GROUND
 ## SET TO NULL/OFF IF YOU DON'T WANT TO USE IT. MUST BE IN ARRAY i.e - 410|411|412|413|414|415
-     var PRIORITY.ROOMS NULL
+     var PRIORITY.ROOMS 48|49
 # FRIEND LIST (People to hunt with or your own characters to share a room) Put your friends names in place of these. Ex. |Bob|Fred|George. Needs leading PIPE
 # Can just put your name in here and it will only find empty rooms.
      var FRIENDS %CHARACTER1|%CHARACTER2|%CHARACTER3|%CHARACTER4|%CHARACTER5|%CHARACTER6|%CHARACTER7|%CHARACTER8|%CHARACTER9|%CHARACTER10|%CHARACTER11|Odium|Breckin|Bayndaid
@@ -2291,7 +2291,7 @@ if (!$AMMOSWAP) then
      var APP.ITEMS ON
 ## ITEMS TO APPRAISE (Set to NULL to not use)
      var app1 SHIRT
-     var app2 gem pouch 
+     var app2 Black Pouch 
      var app3 TARGE 
 ## SANOWRET CRYSTAL? (ON or OFF) - ON will exhale crystal every ~100 seconds
      var Crystal ON
@@ -2967,10 +2967,10 @@ if "$charactername" = "%CHARACTER4" then
 ### HEAL.CITY ( NULL or CITY NAME (CROSS/LETH/HIB/RIVER/THEREN/SHARD) - Will run to this town for healing IF NEARBY 
      var HEAL.CITY NULL
 ### HOME CITY (NULL or CITY NAME) - Will attempt to return to your home city after a heal run (if not already in that city) ONLY SUPPORTS MAINLAND CITIES
-     var HOME.CITY Crossing
+     var HOME.CITY THEREN 
 ### SAFE ROOM (NULL to NOT USE /let script choose) ~MUST~ TIE INTO HOME.CITY ABOVE! THE ROOM YOU WANT TO SCRIPT IN DURING TOWN RUN - MUST BE VALID ROOMID IN YOUR HOME CITY!
 ### WARNING!: IF YOU DO NOT SET BOTH HOME.CITY AND SAFE.ROOM CORRECTLY YOU ~WILL~ RUN INTO ERRORS - LEAVE BOTH AT NULL TO LET SCRIPT LOGIC HANDLE IT
-     var SAFE.ROOM 658
+     var SAFE.ROOM 41
 ### AUTO-PROGRESS? (ON or OFF) - ON WILL CHOOSE YOUR COMBAT CREATURE AUTOMATICALLY BASED ON YOUR RANKS - YOU DO NOT NEED TO SET IT! OVERRIDES WHATEVER IS IN COMBAT.CRITTER
      var AUTO.PROGRESS OFF 
 ### AUTO-PROGRESS TYPE - CHOOSE ONE: ( NORMAL / LOCKPICK / SKIN / F2P / F2PLOCK / EMPATH / NECRO / MM / CLERIC / UNDEAD )
@@ -3452,7 +3452,7 @@ if (!$AMMOSWAP) then
 ## *For magic lockpick training items - * Assumes you have a worn lockpick ring/case
      var LOCKPICK.ITEM keepsake box 
 ## SET A SECONDARY LOCKPICK ITEM HERE IF YOU HAVE ONE (OR SET TO NULL) 
-     var LOCKPICK.ITEM.2 NULL
+     var LOCKPICK.ITEM.2 Keepsake box
 ## Lockpick.Container is where the LOCKPICK ITEMS should be stored (NULL to try wear them) 
      var Lockpick.Container KIT 
 # PILGRIM BADGES (ON or OFF) *Cleric or Paladin only! - Will visit badge locations
@@ -3680,11 +3680,11 @@ if (!$AMMOSWAP) then
      var Ingot.Container bag 
 ########################################################################################
 ## MOON MAGE ATTACK Spells - Set the OFFENSIVE spells you want to use for each magic type (NULL to not use)
-     var MM.Target.Spell PD|TKT|DO
-     var MM.Debilitation.Spell CALM|SLEEP|Dazzle
-     var MM.Utility.Spell PG|DG|MOONBLADE|RF
-     var MM.Augmentation.Spell EASE|CV
-     var MM.Warding.Spell MAF|
+     var MM.Target.Spell PD|TKT|DO|TKS|
+     var MM.Debilitation.Spell CALM|SLEEP|Dazzle|Hypnotize|MB
+     var MM.Utility.Spell PG|MOONBLADE|RF|SHADOWLING
+     var MM.Augmentation.Spell EASE|CV|SEER
+     var MM.Warding.Spell MAF|PSY|
      var MM.Sorcery.Spell NULL 
 # Cyclic Spell Setup
 # YOU CAN SET ONE OR AN ENTIRE ARRAY OF CYCLICS TO SWITCH THROUGH
@@ -10688,7 +10688,7 @@ CHARACTER12:
 ##################################################################################################################################################################################################################
 #########################################################################################################
 #########################################################################################################
-## CHARACTER 12 VARIABLES
+## CHARACTER 12 VARIABLES                    Amesia
 ## *CHARACTER12 VARIABLES BLOCK BELOW
 if "$charactername" = "%CHARACTER12" then
 #########################################################################################################
@@ -10696,20 +10696,20 @@ if "$charactername" = "%CHARACTER12" then
 ### HEAL.CITY ( NULL or CITY NAME (CROSS/LETH/HIB/RIVER/THEREN/SHARD) - Will run to this town for healing IF NEARBY 
      var HEAL.CITY NULL
 ### HOME CITY (NULL or CITY NAME) - Will attempt to return to your home city after a heal run (if not already in that city) ONLY SUPPORTS MAINLAND CITIES
-     var HOME.CITY NULL
+     var HOME.CITY CROSSING
 ### SAFE ROOM (NULL to NOT USE /let script choose) ~MUST~ TIE INTO HOME.CITY ABOVE! THE ROOM YOU WANT TO SCRIPT IN DURING TOWN RUN - MUST BE VALID ROOMID IN YOUR HOME CITY!
 ### WARNING!: IF YOU DO NOT SET BOTH HOME.CITY AND SAFE.ROOM CORRECTLY YOU ~WILL~ RUN INTO ERRORS - LEAVE BOTH AT NULL TO LET SCRIPT LOGIC HANDLE IT
      var SAFE.ROOM NULL
 ### AUTO-PROGRESS? (ON or OFF) - ON WILL CHOOSE YOUR COMBAT CREATURE AUTOMATICALLY BASED ON YOUR RANKS - YOU DO NOT NEED TO SET IT! OVERRIDES WHATEVER IS IN COMBAT.CRITTER
      var AUTO.PROGRESS ON
 ### AUTO-PROGRESS TYPE - CHOOSE ONE: ( NORMAL / LOCKPICK / SKIN / F2P / F2PLOCK / EMPATH / NECRO / MM / CLERIC / UNDEAD )
-     var PROGRESS.TYPE EMPATH
+     var PROGRESS.TYPE NECRO
 ### CRITTER.GUI (ON or OFF) - CREATES GUI WINDOW - DYNAMICALLY SEARCH AND CLICK FOR YOUR CRITTER BASED ON PROVINCE / SKILL / PREFERENCE. USES A SEPARATE WINDOW AND WILL OVERWRITE COMBAT.CRITTER
      var CRITTER.GUI OFF
 ### WEAPON.GUI (ON or OFF) - IF ON - CREATES A WEAPON GUI WINDOW AT THE START TO CHOOSE YOUR WEAPONS FOR THAT RUN *ONLY IF YOU HAVE AN ARRAY OF WEAPONS SET IN A SINGLE WEAPON VARIABLE*
      var WEAPON.GUI OFF
 ### COMBAT CRITTER MUST BE A VALID CREATURE NAME - USE FULL NAME OR 1/2/3 TO SPECIFY TIERS *SNOW GOBLIN 2
-     var COMBAT.CRITTER MAELSHYVEAN HIEROPHANT
+     var COMBAT.CRITTER NULL
 ### ALTERNATE CRITTER - PICK A ALTERNATE CRITTER TO HUNT - IF YOUR MAIN HUNTING GROUND IS FULL!
      var ALTERNATE.CRITTER NULL
 ## USED TO MOVE YOUR FAVORITE ROOMS TO THE TOP OF THE ROOM LIST. MUST BE VALID TO YOUR HUNTING GROUND
@@ -10725,25 +10725,25 @@ if "$charactername" = "%CHARACTER12" then
 ### WEAPONS/ARMOR/CONTAINER SETTINGS
 ## SET ALL YOUR WEAPONS BELOW - MUST EXACTLY MATCH THE ITEM DESCRIPTION IN HAND! YOU ~CAN~ SET AN ARRAY OF EACH WEAPON 
 ## TO TURN OFF TRAINING A WEAPON SKILL SET IT TO: NULL
-     var SEWEAPON cutlass
-     var LEWEAPON bastard sword
-     var THEWEAPON bastard sword
-     var SBWEAPON war hammer
-     var LBWEAPON NULL
-     var THBWEAPON NULL
-     var STAVES tanbo
-     var POLEARMS spear
-     var RANGED.BOW short bow
-     var RANGED.CROSSBOW crossbow
-     var RANGED.SLING NULL
-     var LTWEAPON throwing club
-     var HTWEAPON spear
+     var SEWEAPON Hawkbill
+     var LEWEAPON cinquedea
+     var THEWEAPON Claymore
+     var SBWEAPON Mace
+     var LBWEAPON RISTE
+     var THBWEAPON RISTE
+     var STAVES Gnarled stick
+     var POLEARMS NULL
+     var RANGED.BOW Longbow
+     var RANGED.CROSSBOW NULL
+     var RANGED.SLING SLING
+     var LTWEAPON BOLA
+     var HTWEAPON Mace
 # MAIN OFFHAND WEAPON TRAINING - MELEE ONLY (MUST BE A LIGHT/MEDIUM WEAPON - HEAVY or 2HANDED WEAPONS WONT WORK!!)
-     var OHWEAPON club
+     var OHWEAPON Hawkbill 
 # ALTERNATE OFFHAND WEAPONS (For Backtraining/Dual Training weapons while training other Weapons)
 ## ~MUST~ BE LIGHT/MEDIUM WEIGHT WEAPON! CANNOT USE HEAVY or 2Handed Weapons!! (SET TO NULL/OFF TO NOT USE)
-     var ALTWEAPON1 club
-     var ALTWEAPON2 NULL
+     var ALTWEAPON1 Demonbone Mace
+     var ALTWEAPON2 Hawkbill
      var ALTWEAPON3 NULL
 # BRAWLWEAPON (DEFAULT: $charactername - Set to NULL to skip brawling)
      var BRAWLWEAPON $charactername
@@ -10758,14 +10758,14 @@ if "$charactername" = "%CHARACTER12" then
      var TrainLowest OFF
 
 # MAX LEARNING RATE for each weapon (will switch when reaching this learningrate). SET TO 35 TO IGNORE LEARNINGRATE
-     var MAX.LEARNINGRATE 5
+     var MAX.LEARNINGRATE 20
 # LEARNING RATE INCREASE (AFTER EVERY FULL LOOP OF WEAPONS - WILL INCREASE MAX.LEARNING BY THIS AMOUNT) 
      var LEARNING.INCREASE 5
 # MAX TIME PER WEAPON - Set MAX time (IN SECONDS) to train a single weapon skill before switching weapons
-     var MAX.TIME 400
+     var MAX.TIME 600
 # MAXIMUM COMBAT TRAINING TIME - Set the MAX time (IN SECONDS) to stay in combat before escaping ( 1 hour = 3600 seconds )
 # SET TO 0 TO MAKE IT LOOP FOREVER (UNLESS TOO HURT/BAGS FULL/BURDEN TOO HIGH
-     var MAX.TRAIN 3600
+     var MAX.TRAIN 0
 # STANCE PER WEAPON (Set to NULL to use default - Or SHIELD, PARRY, EVASION, CUSTOM to use that stance during that particular weapon)
      var SE.STANCE NULL
      var LE.STANCE NULL
@@ -10832,29 +10832,29 @@ if "$charactername" = "%CHARACTER12" then
      
 
 # CONTAINERS - MUST SET YOUR MAIN 3 LARGEST CONTAINERS - RECOMMEND AT LEAST 3 "MAIN" CONTAINERS
-     var Container haversack
-     var Container.Boxes backpack
-     var Container.Backup traveling bag
-     var Container.Crafting greatcloak
+     var Container PACK
+     var Container.Boxes HAVERSACK
+     var Container.Backup NULL
+     var Container.Crafting PACK
 # AMMO CONTAINER FOR STORING ARROWS/BOLTS ETC
-     var Container.Ammo drake-hide quiver
+     var Container.Ammo PACK
      var Container.Ammo.Backup NULL
 ## Container.GemPouch must be a ~closable~ container to store ~FULL~ gem pouches into.
 ## VERY IMPORTANT! - CONTAINER.GEMPOUCH ~MUST~ BE A SEPARATE CONTAINER FROM YOUR MAIN BAGS! A SMALL/MEDIUM CONTAINER IS FINE 
 ## AS SCRIPT WILL KEEP THIS CONTAINER CLOSED AND ONLY USE IT FOR STORING FULL GEM POUCHES
-     var Container.GemPouch carryall
+     var Container.GemPouch HIP TOTE
 # Container.EmptyPouch is for storing EMPTY GEM POUCHES (This can be ANY container EXCEPT for Container.GemPouch )
-     var Container.EmptyPouch belt
+     var Container.EmptyPouch HAVERSACK
 # SHEATH CONTAINER IS FOR MEANT AS A BACKUP FOR STORING SUPER LONG / OVERSIZED WEAPONS BUT CAN BE ANY LARGE CONTAINER
-     var Container.Sheath hip pouch
+     var Container.Sheath HAVERSACK
 # DIRT CONTAINER - For storing dirt for various use (Thieves/Clerics etc) 
      var Container.Dirt NULL
 ## ## MISC SHEATH OPTIONS (For storing specific weapons in specific containers - toolstraps/bandoliers/harnesses etc) - SET TO NULL/OFF TO NOT USE
 ## SET THE SHEATH NAME UNDER SHEATH.# - SET THE WEAPONS YOU WANT TO USE ON EACH SHEATH UNDERNEATH IN AN ARRAY ex.- var Sheath.1 sabre|axe|broadsword
-     var Sheath.1 hip pouch
-     var Sheath.1.Weapons halberd|quarterstaff|bastard sword|maul|greatsword
-     var Sheath.2 NULL
-     var Sheath.2.Weapons frying pan|sledgehammer
+     var Sheath.1 PACK
+     var Sheath.1.Weapons Hawkbill|Claymore|cinquedea|Mace|BOLA|Gnarled stick|RISTE|
+     var Sheath.2 HAVERSACK
+     var Sheath.2 Longbow|Stonebow|
      var Sheath.3 NULL
      var Sheath.3.Weapons NULL
      var Sheath.4 NULL
@@ -10864,42 +10864,42 @@ if "$charactername" = "%CHARACTER12" then
      var Sheath.6 NULL
      var Sheath.6.Weapons NULL
 ## WEAR WEAPONS (Set an array of weapons/shields you want the script to try and wear first before stowing)
-     var Wear.Weapons NULL
+     var Wear.Weapons Longbow
 ## GEM POUCH NAME - BE VERY SPECIFIC *RECOMMEND DUMPING ALL POUCHES AND GET NEW ONES FROM GEM SHOP ON FIRST SETUP
 ## WHEN ASKING FOR GEM POUCHES, "ASK NPC FOR <COLOR> POUCH" - DO NOT ASK FOR "GEM POUCH" OR "POUCH"
 ## BY DEFAULT SCRIPT USES "BLACK POUCH" - THEN SET THE VAR TO  "<color> pouch" - ie. var gemPouch black pouch
-     var gemPouch black pouch
+     var gemPouch Gem Pouch
 # TIE YOUR GEM POUCHES? (ON or OFF) (Tie up your gem pouches for more storage/less inventory space usage - but have to sell the whole pouch or get trader to sell!)
-     var TiePouch ON
+     var TiePouch OFF
 # WORN GEM POUCH? (ON or OFF) (OFF will STOW your gem pouch / ON will wear it )
-     var Gempouch.Worn OFF
+     var Gempouch.Worn ON 
      
 # AMMO SETTINGS - DO NOT REMOVE THE { } BRACKETS
 if (!$AMMOSWAP) then
 {
-     var XbowAmmo drake-fang bolt
-     var BowAmmo arrow
-     var SlingAmmo small rock
+     var XbowAmmo Shard
+     var BowAmmo Boar ARROW
+     var SlingAmmo SHARD
 }
 ## RESTOCK AMMO? (ON or OFF) *SCRIPT WILL AUTOMATICALLY CHECK IF YOU RUN OUT OF AMMO AND ATTEMPT TO RESTOCK
-     var AmmoStock ON
+     var AmmoStock ON 
 ## ARMOR CHECK (ON or OFF) - Turn this OFF if you want the script to SKIP checking your armor at the beginning
 ## If ON - at the beginning, script will remove any armor/fluff you are wearing, and then put on all the armor you have set below. This ensures you have the correct armor on.
-     var ARMOR.CHECK ON
+     var ARMOR.CHECK OFF 
 ## SET YOUR SHIELD (NULL to turn off - NEVER RECOMMENDED TO NOT USE A SHIELD!!!)
-     var MyShield shield
+     var MyShield TARGE
 ## ARM WORN SHIELD? (ON OR OFF) - I RECOMMEND ALWAYS USING AN ARM WORN / SMALL SHIELD!
      var ArmWorn ON
 ## ARMOR TO CHECK (Set to NULL to not check a piece)
-     var CHEST.ARMOR assassin's coat
-     var FACE.ARMOR NULL
-     var HEAD.ARMOR balaclava
+     var CHEST.ARMOR LEATHERS
+     var FACE.ARMOR PLATE MASK
+     var HEAD.ARMOR CHAIN HELM
      var ABDOMEN.ARMOR NULL
      var BACK.ARMOR NULL
      var ARM.ARMOR NULL
-     var HAND.ARMOR icesteel gauntlets
-     var LEG.ARMOR greaves
-     var KNUCKLE hand claw
+     var HAND.ARMOR SCALE GLOVES
+     var LEG.ARMOR NULL
+     var KNUCKLE NULL
      var PARRYSTICK parry stick
 ## BACKTRAIN ARMOR (ARMOR ONLY FOR BACKTRAIN ROUTINE) (Set to NULL to not check a piece)
      var B.CHEST.ARMOR NULL
@@ -10931,16 +10931,16 @@ if (!$AMMOSWAP) then
 # USE WEAK ATTACKS (ON or OFF) - Will use weaker attacks for melee training (good for backtraining or preserving fatigue/balance)
      var WeakAttack OFF
 # AIM ACTIONS (Set a list of actions) - Actions you want to perform while waiting for Full Aim. Separated with |
-     var AimActions |attack|attack|bob
+     var AimActions |Circle|Weave|bob
 ## LOOT MONSTERS? (ON or OFF) IF YOU TURN OFF IT WILL SKIP LOOTING ~PERIOD~
      var Loot.Monsters ON
 ## LOOTING OPTION (Treasure, Boxes, Equipment, Goods or ALL)
-     var Loot.Option treasure
+     var Loot.Option GOODS
 ## LOOTING OPTIONS (ON or OFF) - LOOT OPTIONS FOR MAIN COMBAT
      var Loot.Gems ON
      var Loot.Boxes ON
      var Loot.Metals ON
-     var Loot.Scrolls OFF
+     var Loot.Scrolls ON 
      var Loot.Collectibles OFF
      var Loot.SpiderParts OFF
 # MAX BOXES (Set a number) - MAX number of boxes you want to pick up before turning Box looting off for that run
@@ -10961,13 +10961,13 @@ if (!$AMMOSWAP) then
      var ArrangeTarget NULL
      var ArrangeAll OFF
 ## ArrangeAlways (ON or OFF) - Set ON to ALWAYS arrange regardless of skinning learningrate. OFF will Skip arranging when Skinning learning is locked 
-     var ArrangeAlways OFF
+     var ArrangeAlways ON 
 # MAX BUNDLE SIZE - Max amount of skins to keep in bundle before running away to sell skins (DEFAULT: 30  MAX: 200)
-     var MaxBundle 40
+     var MaxBundle 60
 # Set SNIPE to ON to use Snipe (Thieves/Rangers/Necros only) (Auto-turns off if not thief/ranger/necro)
      var Snipe OFF
 # Set POACH to ON to use POACH (SNIPE overrides this if SNIPE is ON)
-     var Poach OFF
+     var Poach ON 
 # RANGED AIM PAUSE. Set to 0 for Full Aim. Set to desired number of seconds to pause for that many seconds before firing
      var SNAP.FIRE 7
 # RETREAT WHILE USING RANGED? (ON or OFF) - Will retreat when using ranged weapons
@@ -10984,9 +10984,9 @@ if (!$AMMOSWAP) then
 ## APPRAISE ITEMS WHEN NO CRITTERS IN ROOM? (ON or OFF)
      var APP.ITEMS ON
 ## ITEMS TO APPRAISE (Set to NULL to not use)
-     var app1 knife
-     var app2 balaclava
-     var app3 shirt
+     var app1 Case
+     var app2 LEATHERS
+     var app3 Bundle
 ## SANOWRET CRYSTAL? (ON or OFF) - ON will exhale crystal every ~100 seconds
      var Crystal OFF
 ## USE SANORWRET CRYSTALS IN COMBAT? (ON or OFF) - ON will use Sanowrets in combat (Turning ON can effect concentration and mess with spell casting) 
@@ -11028,7 +11028,7 @@ if (!$AMMOSWAP) then
      var Astro1.Container NULL
      var Astro2.Container NULL
 ## ORB RUB IN COMBAT (var Orb.Rub ON or OFF) - TURN ON TO RUB FAVOR ORB IN COMBAT EVERY ~40 MINUTES
-     var Orb.Rub OFF
+     var Orb.Rub ON 
 ####################################################################################################
 # ARMOR SWAP - (ON or OFF) - SPECIAL ARMOR SWAPPING ROUTINE FOR HELMS ONLY
 # WILL SWAP OUT A SINGLE PIECE OF PLATE/BRIG/CHAIN/LIGHT HELM EVERY ~5 MINUTES IN COMBAT 
@@ -11036,22 +11036,22 @@ if (!$AMMOSWAP) then
 ## IF Armor.Swap is ON - THEN ALL THE ARMORS BELOW MUST BE SET CORRECTLY!
 # SET EVERY PIECE OF ARMOR TO SWAP BELOW, MUST SET AN ARMOR PIECE FOR ALL FOUR TYPES - TWO WORDS ONLY!
 # ONE PIECE SHOULD MATCH YOUR MAIN ARMOR HELM
-     var Light_Armor.Helm leather helm
-     var Chain_Armor.Helm chain balaclava
-     var Brigandine.Helm brigandine balaclava
-     var Plate_Armor.Helm plate helm
+     var Light_Armor.Helm NULL
+     var Chain_Armor.Helm NULL
+     var Brigandine.Helm NULL
+     var Plate_Armor.Helm NULL
 ####################################################################################################
 # HEAVY ARMOR REMOVAL - (ON or OFF) - ON will take off plate/brig/chain armor before backstab/stealth routines
 # Generally only needed for noobs with less then ~200 ranks in armors
      var Armor.Noob OFF
 # Set Plate/Brig/Chain pieces here (USE EXACT SYNTAX) (If no armor to remove set to NULL)
-     var PLATE1 brigandine balaclava
-     var PLATE2 light greaves
+     var PLATE1 NULL
+     var PLATE2 NULL
      var PLATE3 NULL
      var PLATE4 NULL
 # Set Light Armor Pieces to Swap in place of the Heavy armor pieces above - if any (set to NULL to not use)
-     var LIGHTARMOR1 rugged cowl
-     var LIGHTARMOR2 rugged greaves
+     var LIGHTARMOR1 NULL
+     var LIGHTARMOR2 NULL
      var LIGHTARMOR3 NULL
      var LIGHTARMOR4 NULL
 
@@ -11105,7 +11105,7 @@ if (!$AMMOSWAP) then
      var Shard.Citizen OFF
 # GET FAVORS? (ON or OFF) - (ONLY WORKS IN CROSSING OR SHARD)
      var GET.FAVORS ON
-     var FAVOR.GOD meraud
+     var FAVOR.GOD Urrem'tier
 # CLIMBING RUN (ON or OFF) - Trains Athletics - (Only works in Crossing or Shard)
      var CLIMBING ON
 ## MAGIC CLIMBING ROPE (ON or OFF) - Checks for a magic rope and uses that instead of Climbing
@@ -11117,14 +11117,14 @@ if (!$AMMOSWAP) then
 # COLLECTING - (ON or OFF) - Trains Outdoorsmanship - Collect rocks during town run
      var COLLECTING ON
 # BRAIDING - (ON or OFF) - Trains Braiding (Engineering) - Only to 60-70 ranks or so!
-     var BRAIDING OFF
+     var BRAIDING OFF 
 # RAVEN'S COURT SCHOLARSHIP STUDY (ON or OFF) - ONLY works in Crossing
      var RAVEN ON
 # TEXTBOOK / COMPENDIUM? (ON or OFF) - Trains Scholarship/FA with an anatomy Textbook
      var TEXTBOOK ON
 # TEXTBOOK TYPE - Textbook or Compendium
-     var TEXTBOOK.TYPE textbook
-     var Textbook.Container backpack
+     var TEXTBOOK.TYPE Guide
+     var Textbook.Container PACK
 # SKINNING/FA TRAINER - (ON or OFF) ONLY WORKS FOR THE MAGIC SKINNING / FA TRAINERS ( https://elanthipedia.play.net/Item:Small_blue-belly_crocodile_with_prominently_stitched_seams )
      var SKINTRAINER OFF
      var SKINTRAIN.NOUN crocodile
@@ -11133,7 +11133,7 @@ if (!$AMMOSWAP) then
 # Set JOURNAL.TYPE ( NULL to NOT USE ) - Set NOUN of item to use ( traveler's diary / explorer's log / soldier journal / etc)
      var JOURNAL.TYPE NULL
 # DISARM BOXES? (Requires disarm script - MAKE SURE YOU SET THE VARIABLES UP IN .DISARM)
-     var DISARM OFF
+     var DISARM ON 
 # BURGLE RUN (ON or OFF) - Does a Burgling Run with .burgle script (BURGLE.PAWN ON will Pawn all Burgle items)
      var BURGLE ON
      var BURGLE.PAWN ON
@@ -11149,20 +11149,20 @@ if (!$AMMOSWAP) then
 # OPTIONS ARE: FUNDAMENTAL, STREAM, AUGMENTATION, UTILITY, WARDING, SORCERY, FIELD, SPELL 
      var RESEARCH.TYPE NULL
 # TEACHING? (ON or OFF) - If ON, will attempt to teach your other characters/people in the Friends variable
-     var TEACH ON
-     var TEACH.SKILL hiding
-     var TEACH.SKILL.2 evasion
+     var TEACH ON 
+     var TEACH.SKILL FA
+     var TEACH.SKILL.2 STEALTH
 ## SUPPORT FOR MASTERCRAFT TRAINING
      var ALCHEMY OFF
-     var ENGINEERING OFF
-     var FORGING OFF
-     var OUTFITTING OFF
+     var ENGINEERING ON 
+     var FORGING ON 
+     var OUTFITTING ON 
      var ENCHANTING OFF
 ## VAULT SWAP (ON or OFF) - ON WILL SWAP OUT YOUR var CONTAINER FOR A SPECIAL BAG IN YOUR VAULT FOR MASTERCRAFT ONLY!~
 ## AFTER MASTERCRAFT IS OVER, IT WILL GO BACK TO THE VAULT AND SWAP IT BACK OUT 
      var VAULT.SWAP OFF
 ## VAULT CITY - SET THIS TO THE CITY WHERE YOU HAVE YOUR VAULT - NOTE IF VAULT.SWAP IS ON IT WILL ATTEMPT TO RUN TO YOUR CITY FIRST
-     var VAULT.CITY shard
+     var VAULT.CITY Crossing
 ## SET THE NAME OF YOUR CRAFTING BAG IN YOUR VAULT - MUST HAVE ALL YOUR CRAFTING TOOLS IN THIS BAG!
 ## MAKE SURE TO BE SPECIFIC WITH YOUR CONTAINER VARIABLES SO THEY DONT GET MIXED UP! 
      var CRAFTING.BAG NULL
@@ -11176,25 +11176,25 @@ if (!$AMMOSWAP) then
      var ALMANAC.LEARN Primary_Magic|Augmentation|Utility|Warding|Debilitation|Targeted_Magic|Defending|Shield_Usage|Plate_Armor|Brigandine|Chain_Armor|Light_Armor|Evasion|Skinning|Perception|Stealth|Athletics|First_Aid|Locksmithing|Parry_Ability|Melee_Mastery|Missile_Mastery|Brawling|Twohanded_Edged|Small_Edged|Large_Edged|Twohanded_Blunt|Large_Blunt|Small_Blunt|Polearms|Staves|Bow|Appraisal|Tactics|Performance|Enchanting|Forging|Engineering|Alchemy|Outfitting|Arcana
 # LOCKPICK TRAINING ITEM? (Set to NULL to not use) - Must match EXACTLY with item name in hands (2 words only)
 ## *For magic lockpick training items - * Assumes you have a worn lockpick ring/case
-     var LOCKPICK.ITEM arm pouch
+     var LOCKPICK.ITEM KEEPSAKE BOX
 ## SET A SECONDARY LOCKPICK ITEM HERE IF YOU HAVE ONE (OR SET TO NULL) 
      var LOCKPICK.ITEM.2 NULL
 ## Lockpick.Container is where the LOCKPICK ITEMS should be stored (NULL to try wear them) 
-     var Lockpick.Container NULL
+     var Lockpick.Container HAVERSACK
 # PILGRIM BADGES (ON or OFF) *Cleric or Paladin only! - Will visit badge locations
      var PILGRIM OFF
 # POWERWALKING (ON or OFF) - If ON will do a Powerwalk near end of town run
-     var POWERWALK OFF
+     var POWERWALK ON 
 ## Setting NO.CONTACT to "ON" will log out for 5 minutes if someone tries to drag you or hold your hand (DEFAULT: OFF)
      var NO.CONTACT ON
 ## Set LOG.ON.STUN (ON or OFF) Set to "ON" to log out if you are too hurt/stunned and are unsuccessful running away (DEFAULT: ON)
-     var LOG.ON.STUN ON
+     var LOG.ON.STUN OFF
 ## LOG.ON.DEATH (ON or OFF) Set OFF to stay logged in even if you die (DEFAULT: ON)
      var LOG.ON.DEATH ON
 ## TOTAL TIME ONLINE - MAX TIME TO STAY ONLINE (IN SECONDS) After this time has passed will idle and logout to avoid AFK checks (Set to 0 to always stay online)
      var ONLINE.TIME 0
 ## FANG COVE? (ON or OFF) - Do you want to go to FANG COVE for healing/town stuff (Only works in Prime if Premium)
-     var FANGCOVE ON
+     var FANGCOVE OFF
 ## USE PREMIUM JUMP JEWELRY? (ON or OFF) - Will use Premie JJ to teleport to Fang Cove for healing/bundles/gems/etc
      var JumpJewelry OFF
      var JewerlyVerb ironwood ring
@@ -11204,20 +11204,20 @@ if (!$AMMOSWAP) then
      var EmpathRoom
 ## BankBot - Used for F2P characters to tip a bankbot any remaining coin at end of run - Set Tipping to 1, Bankbot name and Tiproom = room number bankbot is at in your home town 
      var Tipping 0
-     var BankBot morph
+     var BankBot Nyz
      var TipRoom 753
 ## CLAN ITEM (TF ONLY)
      var CLAN OFF
      var CLAN.ITEM sphere
 ## LIGHTER ITEM (For using a Lighter to start fires instead of flint and blade)
 ## USAGE - var LIGHTER (ON or OFF) - Lighter.Name = verb of the item
-     var Lighter ON
+     var Lighter OFF
      var Lighter.Name stone
 ## CUSTOM TOWN SCRIPT - (Must be the exact name of the script (IGNORE .CMD - JUST USE NAME) 
 ## Set your own script to run during the town run 
 ## YOU MUST HAVE A PARSE AT THE END OF YOUR SCRIPT: put #parse SCRIPT FINISHED!
 ## IF YOU DO NOT HAVE THIS PARSE THEN UBER MAY NOT RECOVER!
-     var Custom.Script NULL
+     var Custom.Script Magic
 ## RPA BESTOW? (ON or OFF) - MUST BE IN THE PIRP SYSTEM TO BESTOW! https://elanthipedia.play.net/RPA_command
      var RPA OFF
 ## LIST THE PEOPLE YOU WANT TO BESTOW RP POINTS TO BELOW IN AN ARRAY!! 
@@ -11234,12 +11234,12 @@ if (!$AMMOSWAP) then
 ## SLOW.CAST OFF (Default) will spam spells in between attacks as much as possible (mana permitting) 
      var Slow.Cast OFF
 # CAMBRINTH ITEM for charging for Buff/Spells (Set to NULL to not use)
-     var Cambrinth cambrinth prism
+     var Cambrinth cambrinth armband
      var Cyclic.Cambrinth NULL
 # CAMBRINTH MANA FOR SPELLS - Amount of Mana to put into cambrinth for ATTACK SPELLS
-     var CambrinthMana 17
+     var CambrinthMana 1
 # CAMBRINTH MANA FOR Cylics - Amount of Mana to put in cambrinth for Cylics ONLY 
-     var CyclicCharge 15
+     var CyclicCharge 5
 # CAMBRINTH CHARGES - Number of Times to Charge your cambrinth (or harness if Cambrinth is NULL) each time!
 ## RECOMMEND LEAVING THIS AT 1.. or 2 AT MAX - THIS VARIABLE TIES INTO HOW SMART MANA CALCULATES MANA 
      var CambrinthCharge 1
@@ -11251,7 +11251,7 @@ if (!$AMMOSWAP) then
      var MAGIC.SNAP 0
 # RITUAL FOCUS ITEM (required for ritual spells - set Ritual to NULL to not use)
 # Ritual.Container can be set to any Container - or set to NULL to wear it first
-     var Ritual sunburst
+     var Ritual NULL
      var Ritual.Container NULL
 # SORCERY RITUAL FOCUS (Separate ritual focus for Sorcery)
      var Sorcery.Focus NULL
@@ -11260,29 +11260,29 @@ if (!$AMMOSWAP) then
      var TMFoci.Container %Container
 # USE SYMBIOSIS ON ATTACK SPELLS? (ON or OFF) - WARNING - SMART.SPELLS WILL PROBABLY NOT WORK CORRECTLY WITH SYMBIOSIS!
 ## WITH SYMBIOSIS ON YOU NEED TO SET MANA MANUALLY AND TURN OFF SMART.SPELLS!
-     var Target.Symbiosis ON
-     var Utility.Symbiosis ON
-     var Augmentation.Symbiosis ON
-     var Warding.Symbiosis ON
-     var Sorcery.Symbiosis ON
-     var Debilitation.Symbiosis ON
+     var Target.Symbiosis OFF
+     var Utility.Symbiosis OFF
+     var Augmentation.Symbiosis OFF
+     var Warding.Symbiosis OFF
+     var Sorcery.Symbiosis OFF
+     var Debilitation.Symbiosis OFF
 # USE SYMBIOSIS ON BUFFS? (ON or OFF) - WARNING - MAY NOT WORK PROPERLY WITH AUTO-DETECTING MANA
-     var Symbiosis.Buffs ON
+     var Symbiosis.Buffs OFF
 ### OFFENSIVE SPELL MANA AMOUNTS - Set amount of mana to put into each magic type
-     var Target.Mana 20
-     var Debilitation.Mana 20
-     var Utility.Mana 20
-     var Augmentation.Mana 20
-     var Warding.Mana 20
+     var Target.Mana 1
+     var Debilitation.Mana 1
+     var Utility.Mana 1
+     var Augmentation.Mana 1
+     var Warding.Mana 1
 ### SET SORCERY MANA TO NULL IF YOU WANT SMART MANA TO SET IT - OTHERWISE SET IT HERE
-     var Sorcery.Mana 20
+     var Sorcery.Mana 1
 ### OFFENSIVE SPELL CAMB AMOUNTS - Set amount of mana to put into each magic type
-     var Target.Camb 8
-     var Debilitation.Camb 8
-     var Utility.Camb 8
-     var Augmentation.Camb 8
-     var Warding.Camb 8
-     var Sorcery.Camb 8
+     var Target.Camb 1
+     var Debilitation.Camb 1
+     var Utility.Camb 1
+     var Augmentation.Camb 1
+     var Warding.Camb 1
+     var Sorcery.Camb 1
 ### SMART MANA FOR SPELLS? AUTO-DETERMINES THE OPTIMAL MANA FOR EACH SPELL AFTER EVERY NEW STARTUP
 ### (ON or OFF) - SETTING THIS ON WILL OVERRIDE MANA SETTINGS ABOVE
      var SMART.SPELLS ON
@@ -11290,7 +11290,7 @@ if (!$AMMOSWAP) then
      var Camb.Heavy OFF
 ## NO CAMBRINTH USE DURING TM / DEBIL SPELLS (ON or OFF) 
 ## IF YOU SET THIS ON, SCRIPT WILL SKIP USING A CAMBRINTH FOR TM OR DEBIL SPELLS
-     var NoCambTM OFF
+     var NoCambTM ON 
 ## MAGIC TATTOO (Set to NULL or the FULL SPELLTIMER NAME i.e - IronConstitution - MajorPhysicalProtection - GhostShroud ) - Will use a Magic Tattoo every ~5-10 minutes
 ## FULL SPELLTIMER NAME MUST ALSO BE SET IN YOUR BUFFS OR SPELLS
      var Magic.Tattoo Tailwind
@@ -11303,7 +11303,7 @@ if (!$AMMOSWAP) then
 ########################################################################################
 # NECROMANCER
 # Set NECRO.HEAL to "ON" to turn on Necro Healing - (Consume Flesh / Devour depending on skill)
-     var Necro.Heal ON
+     var Necro.Heal OFF
 ## NECROHEAL CREATURE (FOR SETTING A ~LOW~ LEVEL CREATURE TO RUN AND KILL ONLY FOR HEALING PURPOSES)
 ## IDEALLY SET THIS TO A CREATURE NEXT TO YOUR "HOMETOWN" SO YOU DON'T HAVE TO RUN FAR
      var NecroHeal.Critter NULL
@@ -11312,7 +11312,7 @@ if (!$AMMOSWAP) then
 ## FORSAKEN? (ON or OFF) - Is your Necro Forsaken? IF ON - WILL AVOID TOWNS AS MUCH AS POSSIBLE   
      var Forsaken OFF
 ## RISEN? (ON or OFF) - Will create Risen Minions in combat 
-     var Risen ON
+     var Risen OFF
 ## QUICKEN EARTH - ON to try and check for and summon dirt constructs every ~5 minutes
      var QuickenEarth OFF
      var QE.Mana 15
@@ -11322,17 +11322,17 @@ if (!$AMMOSWAP) then
 # CYCLIC.Mana MUST be set for each individual cyclics! 
 # YOU MUST SET cyclic.mana in an array to match!! 6 cyclic - 6 mana numbers
 # SET TO NULL/OFF IF NOT TRAINING CYCLICS
-     var Necro.Cyclics |USOL|ROC|ROG
-     var Necro.Cyclics.mana |5|4|5
+     var Necro.Cyclics ROC|ROG
+     var Necro.Cyclics.mana 6|6
 ## Necromancer ATTACK Spells - Set the OFFENSIVE spells you want to use for each magic type and how much mana
-     var Necro.Target.Spell ACS
-     var Necro.Debilitation.Spell PV
-     var Necro.Utility.Spell ROG
-     var Necro.Augmentation.Spell NULL
-     var Necro.Warding.Spell CH
+     var Necro.Target.Spell ACS|SV|
+     var Necro.Debilitation.Spell VOD|HP|VS
+     var Necro.Utility.Spell EOTB 
+     var Necro.Augmentation.Spell EASE|OBFUSCATION
+     var Necro.Warding.Spell MAF
      var Necro.Sorcery.Spell NULL
 ## Set your BUFF SPELLS to use in a list. TO ADD A BUFF ADD |BUFFNAME  to the end of the list.
-     var Necro.Buffs |PHP|QE|REI|ROC
+     var Necro.Buffs EASE|OBFUSCATION|MAF|EOTB|
 ########################################################################################
 ### BARD
 # Cyclic Spell Setup
