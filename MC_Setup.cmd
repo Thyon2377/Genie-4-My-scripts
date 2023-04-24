@@ -193,7 +193,7 @@ CHARACTER2:
 #	MC_SMALL.ORDERS: For only working orders 5 volumes or smaller, 0 for off, 1 for on
 put #var MC_FORGING.STORAGE rucksack
 put #var MC_FORGING.DISCIPLINE weapon
-put #var MC_FORGING.MATERIAL STEEL
+put #var MC_FORGING.MATERIAL BRONZE
 put #var MC_FORGING.DIFFICULTY hard
 put #var MC_FORGING.DEED off
 put #var MC_SMALL.ORDERS 0

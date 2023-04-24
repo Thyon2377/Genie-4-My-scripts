@@ -84,6 +84,10 @@ action (book) var fount.need $1 when .*(\d).* mana fount$
 var HaloType NULL
 action var HaloType $1 when (\w+) with a gleaming Kertigen halo
 
+### ELEMENTAL WATER CUBE TIMER SETUP
+if !def(MC.WATERCUBE.TIME) then put #var MC.WATERCUBE.TIME $gametime
+if !def(MC.WATERCUBE.LAST) then put #var MC.WATERCUBE.LAST {#evalmath ($gametime - 900)}
+
 #### MIGRATED FROM MASTERCRAFT MAIN SCRIPT SO THAT TOOL REPAIR WORKS IN ALL SCRIPTS
 if $MC_END.EARLY = 1 then 
      {
@@ -296,33 +300,53 @@ location.vars:
      var SENT.work.room 762|763|764|765|766|767
      var SENT.room.list 755|756|757|758|759|760|761|762|763|764|765|766|767
      var SENT.master.room 756
-	#Hibarnhivdar Forging
-     var HibF.room.list 407|408|416|417|418|419|409|410|411|412|413|414|415
-     var HibF.master.room 407|408|416|417|418|419|409|410|411|412|413|414|415
-     var HibF.work.room 416|417|418|419
-     var HibF.grind.room 418|419
      
+	#Hibarnhivdar Forging
+     var HibF.room.list 401|402|403|404|405|406|407|408|409|410|411|412|413
+     var HibF.master.room 401|402|403|404|405|406|407|408|409|410|411|412|413
+     var HibF.work.room 403|404|405|406
+     var HibF.grind.room 413|412|411|410
+     #Hibarnhivdar Engineering
+     var HIBE.tools.room 481
+     var HIBE.supplies.room 477
+     var HIBE.books.room 482
+     var HIBE.work.room 479|478|480
+     var HIBE.room.list 478|479|480|481|482|477|476|475
+     var HIBE.master.room 475|476|477|478|479|480|481|482
+     #Hibarnhivdar Alchemy
+     var HIBA.tools.room 464
+     var HIBA.supplies.room 460
+     var HIBA.books.room 459
+     var HIBA.work.room 461|462|463
+     var HIBA.room.list 457|458|459|460|461|462|463|464|465
+     var HIBA.master.room 464|465|457|458|459|460|461|462|463    
      #Hibarnhivdar Enchanting
-     var HIBENT.tools.room 438
-     var HIBENT.supplies.room 439
-     var HIBENT.books.room 437
-     var HIBENT.work.room 441|442|443|444
-     var HIBENT.room.list 435|436|437|438|439|440|441|442|443|444
-     var HIBENT.master.room 435|436|437|438|439|440
+     var HIBENT.tools.room 432
+     var HIBENT.supplies.room 433
+     var HIBENT.books.room 431
+     var HIBENT.work.room 436|437|438|435
+     var HIBENT.room.list 436|437|438|435|430|431|432|433|434|429
+     var HIBENT.master.room 436|437|438|435|430|431|432|433|434|429
+     #Hibarnhivdar Outfitting
+     var HIBO.room.list 466|467|468|469|470|471|472|473|474
+     var HIBO.master.room 466|467|468|469|470|471|472|473|474
+     var HIBO.work.room 469|467|470|468
+     var HIBO.wheel.room 469|467|470|468
+     var HIBO.loom.room 469|467|470|468    
      
 	#Mer'Kresh Forging
      var MKF.room.list 332|333|334|335|336|337|338|339|340|341|342|343|344|345|346|347|348
      var MKF.tools.room 335
-	 var MKF.supplies.room 334
+	var MKF.supplies.room 334
      var MKF.books.room 333
      var MKF.master.room 333|334|335|336|337|338
-	 var MKF.smelt.room 337|338|339|340|341
+	var MKF.smelt.room 337|338|339|340|341
      var MKF.work.room 344|345|346|347|348
      var MKF.grind.room %MKF.work.room
      
      #Fang Cove Engineering
-     var FE.room.list 206|207|208|209|210|220|221
-     var FE.master.room 206|207|208|209|210
+     var FE.room.list 206|207|208|209|210|220|221|182
+     var FE.master.room 206|207|208|209|210|182
      var FE.work.room 220|221
      
      #Fang Cove Forging
@@ -347,8 +371,8 @@ location.vars:
      var FENT.supplies.room 236
      var FENT.books.room 234
      var FENT.work.room 241|240|238|239
-     var FENT.room.list 232|233|234|235|236|237|238|239|240|241
-     var FENT.master.room 232|233|234|235|236|237
+     var FENT.room.list 232|233|234|235|236|237|238|239|240|241|182
+     var FENT.master.room 232|233|234|235|236|237|182
      
      #Muspari Forging
      var MUF.room.list 504|505|506|507|508|509|510|511|512|513|514|515|516|517|518|519|520
@@ -386,6 +410,7 @@ location.vars:
      var fang.repair.room 205
      var fang.repair clerk
 
+     var FC 0
      var Master.Found 0
      action instant var Master.Found 1 when ^Heavily muscled for an Elf, Fereldrin|^Yalda is a plump Dwarf|^Standing at an imposing height, the Gor'Tog surveys |^Serric is a muscular Human|^Juln is a muscular Dwarf|^Hagim is slight Gnome man|^Paarupensteen is a balding plump Halfling|^Milline is a tall Elothean woman|^Talia is a honey-brown haired Human|^This well-muscled Elf stands taller than 
      return
@@ -415,6 +440,9 @@ check.location:
      if $zoneid = 67 && matchre("%SENT.room.list", "\b$roomid\b") then var society Shard.Enchanting
 	if $zoneid = 116 && matchre("%HibF.room.list", "\b$roomid\b") then var society Hib.Forging
      if $zoneid = 116 && matchre("%HIBENT.room.list", "\b$roomid\b") then var society Hib.Enchanting
+	if $zoneid = 116 && matchre("%HIBA.room.list", "\b$roomid\b") then var society Hib.Alchemy
+	if $zoneid = 116 && matchre("%HIBE.room.list", "\b$roomid\b") then var society Hib.Engineering
+	if $zoneid = 116 && matchre("%HIBO.room.list", "\b$roomid\b") then var society Hib.Outfitting
 	if $zoneid = 107 && matchre("%MKF.room.list", "\b$roomid\b") then var society MerKresh.Forging
 	if $zoneid = 7 && matchre("%LvF.room.list", "\b$roomid\b") then var society Lava.Forge
 	if $zoneid = 61 && matchre("%LPF.room.list", "\b$roomid\b") then var society Leth.Premie.Forge
@@ -748,16 +776,44 @@ put #tvar repair.clerk %shard.repair
 var society.type Enchanting
 return
 
+Hib.Alchemy:
+var master Thynik
+put #tvar master.room %HIBA.master.room
+put #tvar work.room %HIBA.work.room
+put #tvar supply.room %HIBA.supplies.room
+put #tvar tool.room %HIBA.tools.room 
+put #tvar oil.room 407
+put #tvar repair.room 314
+put #tvar repair.clerk Ladar
+var society.type Alchemy
+return
+
+Hib.Engineering:
+var master Master
+put #tvar master.room %HIBE.master.room
+put #tvar work.room %HIBE.work.room
+put #tvar supply.room %HIBE.supplies.room
+put #tvar part.room %HIBE.supplies.room
+put #tvar tool.room %HIBE.tools.room
+put #tvar ingot.buy 409
+put #tvar oil.room 407
+put #tvar repair.room 314
+put #tvar repair.clerk Ladar
+var society.type Engineering
+return
+
 Hib.Forging:
 var master Juln
 put #tvar master.room %HibF.master.room
 put #tvar grind.room %HibF.grind.room
 put #tvar work.room %HibF.work.room
 put #tvar deed.room 415
-put #tvar supply.room 415
+put #tvar supply.room 409
 put #tvar part.room 413
-put #tvar tool.room 413
-put #tvar oil.room 413
+put #tvar tool.room 407
+put #tvar oil.room 407
+put #tvar repair.room 314
+put #tvar repair.clerk Ladar
 var society.type Forging
 return
 
@@ -769,7 +825,23 @@ put #tvar supply.room %HIBENT.supplies.room
 put #tvar part.room %HIBENT.supplies.room
 put #tvar tool.room %HIBENT.tools.room
 put #tvar oil.room 413
+put #tvar repair.room 314
+put #tvar repair.clerk Ladar
 var society.type Enchanting
+return
+
+Hib.Outfitting:
+var master Master
+put #tvar master.room %HIBO.master.room
+put #tvar work.room %HIBO.work.room
+put #tvar supply.room 471
+put #tvar part.room 471
+#order parts
+put #tvar tool.room 473
+put #tvar oil.room 413
+put #tvar repair.room 314
+put #tvar repair.clerk Ladar
+var society.type Outfitting
 return
 
 MerKresh.Forging:
@@ -941,7 +1013,9 @@ find.room:
      eval temp.max count("%find.room","|")
 find.room2:
      gosub automove %find.room(%temp)
+     pause 0.1
      gosub roomplayerstrip
+     echo ROOMID: $roomid
       if ((matchre("%find.room", "\b$roomid\b")) && matchre("$roomplayers", "(^$)")) then
 		{
 		unvar temp
@@ -969,9 +1043,9 @@ roomplayerstrip:
 find.room.wait:
      var temp 0
      gosub automove $tool.room
-     echo *** All workrooms occupied, waiting 90 seconds before trying again...
+     echo *** All workrooms occupied, waiting 30 seconds before trying again...
      put #parse All workrooms occupied
-     pause 90
+     pause 30
      return
 
 find.master:
@@ -1294,6 +1368,7 @@ manualwater:
 	action (order) on
      pause 0.5
 	gosub ORDER
+     pause 0.2
 	action (order) off
 	gosub ORDER 1
 	gosub PUT_IT my water in my %main.storage
@@ -1317,6 +1392,7 @@ manualalcohol:
 	gosub automove alchemy suppl
 	action (order) on
 	gosub ORDER
+     pause 0.2
 	action (order) off	
 	gosub ORDER $alcohol.order
 	gosub PUT_IT my alcohol in my %main.storage
@@ -1325,12 +1401,22 @@ manualalcohol:
 	
 ##############################
 ### MIGRATED FROM MASTERCRAFT - TO WORK WITH ALL INDIVIDUAL SCRIPTS
+
+# This sub added for picking up any repair ticket in inventory when MC FIRST STARTS - to get items back
+repair.start:
+     var temp.room $roomid
+     gosub automove $repair.room
+     gosub RepairAllItems
+     gosub ReturnAllItems
+     gosub automove %temp.room
+     return
+
 get.tools:
      var temp.room $roomid
-	 gosub automove $repair.room
+	gosub automove $repair.room
      var toolcount 0
      eval toolstotal count("$MC_WORK.TOOLS","|")
-	 gosub EMPTY_HANDS
+	gosub EMPTY_HANDS
 get.tools1:
      if matchre ("(?i)$MC_WORK.TOOLS(%toolcount)", "(?i)%clerktools") then 
 	 {
@@ -1362,7 +1448,7 @@ got.tool:
 	 
 clerk.tools.done:
      gosub automove %temp.room
-	 return
+	return
 
 check.tools:
      evalmath lastToolRepairTime $gametime - $last%society.typeRepair
@@ -1522,6 +1608,7 @@ new.tool:
                action (order) on
                pause 0.5
                gosub ORDER
+               pause 0.2
                action (order) off
                gosub ORDER $stain.order
                gosub PUT_IT my stain in my %main.storage
@@ -1533,6 +1620,8 @@ new.tool:
                action (order) on
                pause 0.5
                gosub ORDER
+               pause 0.2
+               action (order) off
                gosub ORDER $oil.order
                gosub PUT_IT my oil in my %main.storage
                var oil.gone 0
@@ -1543,6 +1632,7 @@ new.tool:
                action (order) on
                pause 0.5
                gosub ORDER
+               pause 0.2
                action (order) off
                gosub ORDER $brush.order
                gosub PUT_IT my brush in my %main.storage
@@ -1658,7 +1748,7 @@ ToolCheckLeft:
 #### INITIAL HALO HANDLING TO REMOVE TOOLS
 HALO_REMOVE:
      if ("$righthand" != "Empty") then gosub STOW_RIGHT
-     if ("$lefthand" != "Empty") then gosub STOW_RIGHT
+     if ("$lefthand" != "Empty") then gosub STOW_LEFT
      echo
      echo *** REMOVING TOOLS FROM HALO
      echo
@@ -1772,7 +1862,7 @@ HALO_RESTACK:
      echo *** RE-ADDING TOOLS TO HALO
      echo
      if ("$righthand" != "Empty") then gosub STOW_RIGHT
-     if ("$lefthand" != "Empty") then gosub STOW_RIGHT
+     if ("$lefthand" != "Empty") then gosub STOW_LEFT
      if (matchre("%discipline", "weapon|armor|blacksmith") || matchre("$roomname", "Forging Society")) then
           {
                if "%repair" = "on" then gosub check.tools
@@ -1817,6 +1907,10 @@ HALO_RESTACK:
                gosub HALO_STACK $MC_LOOP
                gosub HALO_STACK $MC_BRAZIER
           }
+     pause 0.001
+     put study my halo
+     pause 0.5
+     pause 0.2
      if matchre("$lefthand", "halo") then gosub STOW_LEFT
      if matchre("$righthand", "halo") then gosub STOW_RIGHT
      return
@@ -1838,6 +1932,125 @@ HALO_STACK:
      if matchre("$lefthand", "(?i)%item") then gosub STOW_LEFT
      return
      
+WATERCUBE_TIMER:
+     if !def(MC.WATERCUBE.TIME) then put #var MC.WATERCUBE.TIME $gametime
+     put #var MC.WATERCUBE.LAST {#evalmath ($gametime - $MC.WATERCUBE.TIME)}
+     if ($MC.WATERCUBE.LAST >= 900) then gosub WATERCUBE
+     if ($MC.WATERCUBE.LAST < 900) then
+          {
+               echo
+               echo *** Cube of Water still on cooldown!
+               echo *** Last use: $MC.WATERCUBE.LAST seconds
+               echo
+          }
+     return
+
+WATERCUBE:
+     pause 0.01
+     echo
+     echo *** USING ELEMENTAL CUBE OF WATER!
+     echo
+     put touch my $MC_WATERCUBE
+     pause 0.2
+     put #var MC.WATERCUBE.TIME $gametime
+     return
+
+GetHerbs:
+     var startingRoom $roomid
+     var herb $0
+     echo
+     echo #############
+     echo # Stocking up on %herb
+     echo # Attempting to Forage
+     echo #############
+     echo
+     pause 0.6
+     if ("$righthand" != "Empty") then gosub STOW_RIGHT
+     if ("$lefthand" != "Empty") then gosub STOW_LEFT
+     ### TO THE BEST PLACE TO FIND HERBS NEARBY
+     ## ALCHEMY ONLY IN CROSS/HAVEN/SHARD/RATHA/MUSPARI/FC
+     if ($zoneid = 1) then gosub AUTOMOVE willow
+     if ($zoneid = 30) then
+          {    
+               gosub AUTOMOVE egate
+               gosub AUTOMOVE 4
+          }
+     if ($zoneid = 47) then gosub AUTOMOVE 68
+     if ($zoneid = 67) then
+          {    
+               gosub AUTOMOVE east
+               gosub AUTOMOVE campfire
+          }
+     if ($zoneid = 90) then gosub AUTOMOVE green
+     if ($zoneid = 150) then gosub AUTOMOVE 45
+     pause 0.8
+     pause 0.1
+     var HerbLoop 0
+     var HerbsFound 0
+ForageHerbs:
+     echo
+     echo *** Forage Count: %HerbLoop
+     echo
+     math add HerbLoop 1
+     pause 0.2
+     pause 0.2
+     send forage %herb
+     pause
+     pause 0.5
+     pause 0.2
+     if matchre("$righthand", "%herb") then
+          {
+               math HerbsFound add 1
+               gosub STOW_RIGHT
+          }
+     if matchre("$lefthand", "%herb") then
+          {
+               math HerbsFound add 1
+               gosub STOW_LEFT
+          }
+     if ("$righthand" != "Empty") then gosub STOW_RIGHT
+     if ("$lefthand" != "Empty") then gosub STOW_LEFT
+     if ((%HerbLoop > 6) && (%HerbsFound = 0)) then
+          {
+               echo *** DAMNIT NO HERBS FOUND!
+               echo *** Maybe you just suck at Outdoorsmanship?
+               echo *** Or is this a bad spot?
+               return
+          }
+FORAGE_DONE:
+     pause 0.1
+     if matchre($zoneid, "(31|32|33)") then gosub automove river
+     if matchre($zoneid, "(31|32|33)") then gosub automove river
+     if ($zoneid = 66) then gosub automove east
+     if ($zoneid = 66) then gosub automove east
+     pause 0.2
+     gosub AUTOMOVE %work.room
+     pause 0.5
+HerbProcess:
+     pause 0.001
+     put get my %herb
+     pause 0.2
+     pause 0.5
+     pause 0.1
+     if ("$righthand" != "Empty") then
+          {
+          get my %herb from my portal
+          pause 0.6
+          pause 0.3             
+          }
+     if ("$righthand" != "Empty") then return
+HerbPress:
+     put put my $righthandnoun in press
+     pause 0.5
+     pause 0.1
+     put put my $righthandnoun in grinder
+     pause 0.5
+     pause 0.1
+     pause 0.2
+     if ("$righthand" != "Empty") then gosub STOW_RIGHT
+     if ("$lefthand" != "Empty") then gosub STOW_LEFT
+     goto HerbProcess
+
 SWAP:
      pause 0.0001
      send swap
@@ -1863,7 +2076,14 @@ return
 
 Analyze:
      var got.analyze YES
-	if %society.type = Enchanting then gosub Action analyze $MC.order.noun on brazier
+	if (%society.type = Enchanting) then
+          {
+               if matchre("$MC_BRAZIER", "(?i)NULL") then
+                    {
+                         gosub Action analyze $MC.order.noun on brazier
+                    }
+               else gosub Action analyze $MC.order.noun on my brazier
+          }
      else gosub Action analyze $MC.order.noun
 	return
 
@@ -1977,7 +2197,7 @@ PUT:
      matchre RETURN ^\s*LINK ALL CANCEL\s*\- Breaks all links
      matchre RETURN (bundle them with your logbook and then give|you trace|you just received a work order|You hand|You slide|You place)
      matchre RETURN ^(You have no idea how to craft|The book is already turned|You turn your book|You realize you have items bundled with the logbook)
-     matchre RETURN (You measure out|You carefully break off|^You hand|"There isn't a scratch on that|"I don't repair those here\.")
+     matchre RETURN (You measure out|You carefully break off|^You hand|\"There isn't a scratch on that|\"I don't repair those here\.)
      matchre RETURN (Just give it to me again if you want|completely undamaged and does not need repair|not damaged enough to warrant repair)
      matchre RETURN ^(You find your jar|The (\S+) can only hold)
      matchre RETURN ^(You .*open|You .*close|That is already open|That is already closed)
